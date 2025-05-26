@@ -8,7 +8,7 @@ This project focuses on **cleaning** and **preparing** the Titanic dataset for *
 
 ---
 
-## Dataset Overview
+## 📂 Dataset Overview
 
 The Titanic dataset contains information about the passengers aboard the Titanic ship, including:
 
@@ -27,7 +27,7 @@ The Titanic dataset contains information about the passengers aboard the Titanic
 
 ---
 
-## Steps Performed
+## ✔ Steps Performed
 
 ### 1. Dataset Import & Initial Exploration
 - Loaded the dataset using **pandas**.  
@@ -57,7 +57,7 @@ The Titanic dataset contains information about the passengers aboard the Titanic
 
 ---
 
-## Tools & Libraries Used
+## 🛠️ Tools & Libraries Used
 
 ```python
 import pandas as pd
