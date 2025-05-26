@@ -1,64 +1,67 @@
 # AIML-Titanic-Data-Preprocessing
 Data cleaning and preprocessing of the Titanic dataset
 
-### Titanic Dataset Preprocessing
 
-This project is done as part of the *AI & ML Internship – Task 1: Data Cleaning and Preprocessing*.  
-The goal is to clean and prepare the Titanic dataset for analysis or machine learning by handling missing values, encoding categorical variables, scaling features, and removing outliers.
+## Titanic Dataset Preprocessing Project
 
----
-
-## 📁 Dataset Description
-
-The dataset is a CSV file (titanic.csv) containing details of passengers aboard the Titanic, including:
-
-- PassengerId  
-- Survived  
-- Pclass  
-- Name  
-- Sex  
-- Age  
-- SibSp  
-- Parch  
-- Ticket  
-- Fare  
-- Cabin  
-- Embarked  
+This project focuses on **cleaning** and **preparing** the Titanic dataset for **machine learning** analysis. The main objective is to **handle missing data**, **convert categorical variables to numeric**, **normalize numerical features**, and **detect/remove outliers** to ensure the data is ready for modeling.
 
 ---
 
-## ✅ Steps Performed
+## Dataset Overview
 
-### 1. Import and Explore the Dataset
-- Loaded dataset using pandas.
-- Explored structure using .info(), .describe(), and .head().
-- Checked for missing values using .isnull().sum().
-- Verified data types and used .value_counts() for categorical analysis.
+The Titanic dataset contains information about the passengers aboard the Titanic ship, including:
 
-### 2. Handle Missing Values
-- Filled missing values in Age using *median*.
-- Filled missing values in Embarked using *mode*.
-- Dropped Cabin due to too many missing values.
-
-### 3. Convert Categorical Features to Numerical
-- Encoded the Sex column using *Label Encoding*.
-- Used *One-Hot Encoding* for the Embarked column with pd.get_dummies().
-
-### 4. Normalize / Standardize Numerical Features
-- Applied *StandardScaler* to scale Age and Fare to standard normal distribution (mean=0, std=1).
-
-### 5. Visualize and Remove Outliers
-- Used *Seaborn boxplots* to visualize outliers in Age and Fare.
-- Removed outliers using the *IQR (Interquartile Range)* method:
-  - Retained data between Q1 - 1.5*IQR and Q3 + 1.5*IQR.
+- **PassengerId**  
+- **Survived** (target variable)  
+- **Pclass** (ticket class)  
+- **Name**  
+- **Sex**  
+- **Age**  
+- **SibSp** (siblings/spouses aboard)  
+- **Parch** (parents/children aboard)  
+- **Ticket**  
+- **Fare**  
+- **Cabin**  
+- **Embarked** (port of embarkation)  
 
 ---
 
-## 🛠 Libraries Used
+## Steps Performed
+
+### 1. Dataset Import & Initial Exploration
+- Loaded the dataset using **pandas**.  
+- Checked dataset shape, data types, and summary statistics.  
+- Identified missing values using `.isnull().sum()`.  
+- Analyzed categorical variables using `.value_counts()`.  
+
+### 2. Handling Missing Values
+- Imputed missing **Age** values using the **median**.  
+- Filled missing **Embarked** entries using the most frequent category (**mode**).  
+- Dropped **Cabin** column due to excessive missing data.  
+
+### 3. Encoding Categorical Variables
+- Converted **Sex** column into numerical values using **label encoding** (`male`=1, `female`=0).  
+- Applied **one-hot encoding** to the **Embarked** column to handle multiple categories.  
+
+### 4. Feature Scaling
+- Used **StandardScaler** from scikit-learn to **standardize** the **Age** and **Fare** features (mean = 0, std = 1).  
+- Scaling improves model performance by **normalizing feature ranges**.  
+
+### 5. Outlier Detection and Removal
+- Visualized outliers in **Age** and **Fare** using **boxplots** from seaborn.  
+- Applied the **Interquartile Range (IQR)** method to detect and remove outliers:  
+  - Calculated **Q1** (25th percentile) and **Q3** (75th percentile).  
+  - Defined bounds as **Q1 - 1.5*IQR** and **Q3 + 1.5*IQR**.  
+  - Filtered dataset to keep only data within these bounds.  
+
+---
+
+## Tools & Libraries Used
 
 ```python
-import pandas as pd  
-import numpy as np  
-import seaborn as sns  
-import matplotlib.pyplot as plt  
+import pandas as pd
+import numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt
 from sklearn.preprocessing import LabelEncoder, StandardScaler
